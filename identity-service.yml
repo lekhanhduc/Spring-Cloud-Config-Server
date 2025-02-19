@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /identity
+# Eureka
+eureka:
+  instance:
+    prefer-ip-address: true   # Bắt Eureka sử dụng IP thay vì hostname
+    ip-address: 127.0.0.1     # Cố định IP về localhost
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# Circuit Breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      identityService:
+        failureRateThreshold: 50  # Nếu tỷ lệ lỗi > 50%, Circuit Breaker sẽ mở
+        slowCallRateThreshold: 50 # Nếu tỷ lệ gọi chậm > 50%, Circuit Breaker sẽ mở
+        slowCallDurationThreshold: 2000ms # Nếu thời gian gọi > 2 giây, được xem là chậm
+        permittedNumberOfCallsInHalfOpenState: 3 # Số request thử lại khi Circuit Breaker đang ở trạng thái HALF-OPEN
+        slidingWindowSize: 10  # Số request được xem xét mở hay đóng Circuit Breaker, ở đây là 10 request gần nhất
+        waitDurationInOpenState: 5000ms # Thời gian Circuit Breaker sẽ mở trước khi thử lại (5 giây)
+  retry:
+    instances:
+      identityService:
+        maxAttempts: 3 # Nếu request gặp lỗi, hệ thống sẽ thử lại tối đa 3 lần trước khi từ bỏ và kích hoạt phương thức fallback.
+        waitDuration: 1000ms  # Mỗi lần thử lại, hệ thống sẽ chờ 1 giây trước khi thử tiếp.
+  ratelimiter:
+    instances:
+      identityService:
+        limitForPeriod: 1000 #  1000 request là giới hạn tối đa mà service identityService có thể xử lý trong 1 giây.
+        limitRefreshPeriod: 1s  # Sau mỗi giây, hệ thống sẽ cho phép thêm 10 request.
+        timeoutDuration: 500ms  # Nếu vượt quá giới hạn, đợi tối đa 500ms trước khi từ chối request
+
