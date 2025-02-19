@@ -2,6 +2,9 @@ server:
   port: 8080
   servlet:
     context-path: /identity
+spring:
+  application:
+    name: IDENTITY-SERVICE
 # Eureka
 eureka:
   instance:
