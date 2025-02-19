@@ -35,3 +35,7 @@ resilience4j:
         limitRefreshPeriod: 1s  # Sau mỗi giây, hệ thống sẽ cho phép thêm 10 request.
         timeoutDuration: 500ms  # Nếu vượt quá giới hạn, đợi tối đa 500ms trước khi từ chối request
 
+spring:
+  boot:
+    message: Hello, Identity Service
+
