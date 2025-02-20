@@ -19,7 +19,7 @@ resilience4j:
       identityService:
         failureRateThreshold: 50  # Nếu tỷ lệ lỗi > 50%, Circuit Breaker sẽ mở
         slowCallRateThreshold: 50 # Nếu tỷ lệ gọi chậm > 50%, Circuit Breaker sẽ mở
-        slowCallDurationThreshold: 2000ms # Nếu thời gian gọi > 2 giây, được xem là chậm
+        slowCallDurationThreshold: 4000ms # Nếu thời gian gọi > 2 giây, được xem là chậm
         permittedNumberOfCallsInHalfOpenState: 3 # Số request thử lại khi Circuit Breaker đang ở trạng thái HALF-OPEN
         slidingWindowSize: 10  # Số request được xem xét mở hay đóng Circuit Breaker, ở đây là 10 request gần nhất
         waitDurationInOpenState: 5000ms # Thời gian Circuit Breaker sẽ mở trước khi thử lại (5 giây)
