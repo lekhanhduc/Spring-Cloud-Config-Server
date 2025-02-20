@@ -13,4 +13,4 @@ eureka:
 
 spring:
   boot:
-    message: Hello Profile Service
+    message: Hello Profile Service, Spring Cloud Bus
