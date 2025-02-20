@@ -1,10 +1,8 @@
 server:
-  port: 8081
+  port: 8082
   servlet:
     context-path: /profile
 spring:
-  application:
-    name: PROFILE-SERVICE
   neo4j:
     authentication:
       username: neo4j
