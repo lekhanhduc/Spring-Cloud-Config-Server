@@ -37,5 +37,5 @@ resilience4j:
 
 spring:
   boot:
-    message: Hello, Identity Service
+    message: Hello, Identity Service, Spring Cloud Bus
 
