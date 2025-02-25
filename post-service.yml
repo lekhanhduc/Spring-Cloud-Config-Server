@@ -3,3 +3,11 @@ server:
   servlet:
     context-path: /post
     
+eureka:
+  instance:
+    prefer-ip-address: true   # Sử dụng IP thay vì hostname
+    ip-address: 127.0.0.1  # Cố định IP thành localhost
+    hostname: localhost  # Đảm bảo Eureka sử dụng localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
