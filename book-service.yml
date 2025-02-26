@@ -1,0 +1,13 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /book
+
+eureka:
+  instance:
+    prefer-ip-address: true   # Bắt Eureka sử dụng IP thay vì hostname
+    ip-address: 127.0.0.1     # Cố định IP về localhost
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
